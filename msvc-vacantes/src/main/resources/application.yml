@@ -1,0 +1,25 @@
+server:
+  port: 8017
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/db_seleccionpersonal
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+
+properties:
+  hibernate:
+    format_sql: true
+
+graphql:
+  path: /graphql
+  graphiql:
+    enabled: true
+    endpoint: /graphql

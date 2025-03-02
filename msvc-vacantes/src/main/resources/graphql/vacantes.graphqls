@@ -1,0 +1,27 @@
+type Vacante {
+    id: ID!
+    cargo: String!
+    descripcion: String!
+    categoriaSalarial: String!
+    estado: String!
+    fechaPublicacion: String!
+    requisicion: Requisicion!  # Relación con `msvc-reqpersonal`
+}
+
+type Requisicion {
+    id: ID!
+    cargo: String!
+    descripcion: String!
+    categoriaSalarial: String!
+    estado: String!
+}
+
+type Query {
+    listarVacantes: [Vacante]
+    buscarVacantePorId(id: ID!): Vacante
+}
+
+type Mutation {
+    crearVacante(cargo: String!, descripcion: String!, categoriaSalarial: String!, idRequisicion: ID!): Vacante
+    cerrarVacante(id: ID!): String
+}
