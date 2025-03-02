@@ -8,7 +8,5 @@ import java.util.List;
 
 @Repository
 public interface VacanteRepositorio extends JpaRepository<Vacante, Long> {
-
-    List<Vacante> findByIdRequisicion(Long idRequisicion); // 🔹 Buscar vacantes por idRequisicion
-
+    List<Vacante> findByRequisicion_IdRequisicion(Long idRequisicion);
 }

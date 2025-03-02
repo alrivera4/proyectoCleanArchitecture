@@ -16,6 +16,6 @@ public class ListarRequisicionesUseCase {
     }
 
     public List<Requisicion> ejecutar() {
-        return repositorio.findAll(); // Se usa findAll() directamente de JpaRepository
+        return repositorio.listarTodas(); // Se usa findAll() directamente de JpaRepository
     }
 }

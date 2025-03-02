@@ -1,4 +1,4 @@
-package ec.edu.espe.msvc.reqpersonal.infraestructura.configuracion;
+package ec.edu.espe.msvc.vacantes.infraestructura.configuracion;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

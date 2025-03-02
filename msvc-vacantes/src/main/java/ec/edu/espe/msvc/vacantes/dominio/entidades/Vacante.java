@@ -16,7 +16,7 @@ public class Vacante {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idVacante;
 
     private String cargo;
     private String descripcion;
@@ -24,6 +24,8 @@ public class Vacante {
     private String estado; // "ABIERTA", "CERRADA"
     private LocalDate fechaPublicacion;
 
-    @Column(name = "id_requisicion")
-    private Long idRequisicion; // Referencia a la requisición
+    @ManyToOne
+    @JoinColumn(name = "id_requisicion", nullable = false)
+    private Requisicion requisicion;
+        
 }
