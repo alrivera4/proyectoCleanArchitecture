@@ -1,10 +1,10 @@
 package ec.edu.espe.msvc.gescandidatos.aplicacion.servicio;
 
-import ec.edu.espe.msvc.gescandidatos.aplicacion.servicio.usecase.BuscarCandidatoUseCase;
-import ec.edu.espe.msvc.gescandidatos.aplicacion.servicio.usecase.CrearCandidatoUseCase;
-import ec.edu.espe.msvc.gescandidatos.aplicacion.servicio.usecase.EliminarCandidatoUseCase;
-import ec.edu.espe.msvc.gescandidatos.aplicacion.servicio.usecase.ListarCandidatosUseCase;
-import ec.edu.espe.msvc.gescandidatos.aplicacion.servicio.usecase.ModificarEstadoCandidatoUseCase;
+import ec.edu.espe.msvc.gescandidatos.aplicacion.usecases.BuscarCandidatoUseCase;
+import ec.edu.espe.msvc.gescandidatos.aplicacion.usecases.CrearCandidatoUseCase;
+import ec.edu.espe.msvc.gescandidatos.aplicacion.usecases.EliminarCandidatoUseCase;
+import ec.edu.espe.msvc.gescandidatos.aplicacion.usecases.ListarCandidatosUseCase;
+import ec.edu.espe.msvc.gescandidatos.aplicacion.usecases.ModificarEstadoCandidatoUseCase;
 import ec.edu.espe.msvc.gescandidatos.dominio.entidades.Candidato;
 import org.springframework.stereotype.Service;
 

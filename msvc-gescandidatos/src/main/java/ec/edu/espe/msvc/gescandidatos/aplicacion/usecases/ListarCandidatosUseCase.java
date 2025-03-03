@@ -1,4 +1,4 @@
-package ec.edu.espe.msvc.gescandidatos.aplicacion.servicio.usecase;
+package ec.edu.espe.msvc.gescandidatos.aplicacion.usecases;
 
 import ec.edu.espe.msvc.gescandidatos.dominio.entidades.Candidato;
 import ec.edu.espe.msvc.gescandidatos.dominio.repositorio.CandidatoRepositorio;
