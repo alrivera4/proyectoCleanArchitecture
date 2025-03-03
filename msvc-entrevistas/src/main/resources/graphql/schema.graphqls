@@ -1,0 +1,47 @@
+type Requisicion {
+    idRequisicion: ID!
+    cargo: String
+    descripcion: String
+    categoriaSalarial: String
+    estado: String
+}
+
+
+type Entrevista {
+    idEntrevista: ID!
+    candidato: Candidato!
+    vacante: Vacante!
+    fechaHora: String
+    lugar: String
+    estado: String
+}
+
+type Candidato {
+    idCandidato: ID!
+    nombre: String
+    apellido: String
+    correo: String
+    telefono: String
+    estado: String
+    vacante: Vacante!  # Relación con Vacante
+}
+
+type Vacante {
+    idVacante: ID!
+    cargo: String
+    descripcion: String
+    categoriaSalarial: String
+    estado: String
+    fechaPublicacion: String
+    requisicion: Requisicion!  # Relación con Requisición
+}
+
+type Query {
+    obtenerEntrevistasPorCandidato(idCandidato: ID!): [Entrevista]
+    obtenerEntrevistaPorId(id: ID!): Entrevista
+}
+
+type Mutation {
+    crearEntrevista(candidatoId: ID!, vacanteId: ID!, fechaHora: String!, lugar: String!, estado: String!): Entrevista
+    eliminarEntrevista(id: ID!): String
+}

@@ -13,6 +13,6 @@ public class EliminarRequisicionUseCase {
     }
 
     public void ejecutar(Long id) {
-        repositorio.eliminar(id); // Se usa deleteById() directamente de JpaRepository
+        repositorio.deleteById(id); // Se usa deleteById() directamente de JpaRepository
     }
 }

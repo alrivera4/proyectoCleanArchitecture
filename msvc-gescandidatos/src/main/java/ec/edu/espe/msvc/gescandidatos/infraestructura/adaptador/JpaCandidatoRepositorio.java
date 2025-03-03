@@ -1,4 +1,4 @@
-package ec.edu.espe.msvc.gescandidatos.infraestructura.adaptador;
+/*package ec.edu.espe.msvc.gescandidatos.infraestructura.adaptador;
 
 import ec.edu.espe.msvc.gescandidatos.dominio.entidades.Candidato;
 import ec.edu.espe.msvc.gescandidatos.dominio.repositorio.CandidatoRepositorio;
@@ -10,29 +10,31 @@ import java.util.Optional;
 @Repository
 public class JpaCandidatoRepositorio implements CandidatoRepositorio{
 
-    private final CandidatoRepositorio candidatoRepositorio;
+    
+    private final JpaCandidatoRepositorioSpring jpaRepositorio;
 
-    public JpaCandidatoRepositorio(CandidatoRepositorio candidatoRepositorio) {
-        this.candidatoRepositorio = candidatoRepositorio;
+    public JpaCandidatoRepositorio(JpaCandidatoRepositorioSpring jpaRepositorio) {
+        this.jpaRepositorio = jpaRepositorio;
     }
+    
     @Override
     public List<Candidato> listarTodas() {
-        return candidatoRepositorio.listarTodas();
+        return jpaRepositorio.findAll();
     }
     @Override
     public Optional<Candidato> buscarPorId(Long id) {
-        return candidatoRepositorio.buscarPorId(id);
+        return jpaRepositorio.findById(id);
     }
     @Override
     public Candidato guardar(Candidato candidato) {
-        return candidatoRepositorio.guardar(candidato);
+        return jpaRepositorio.save(candidato);
     }
     @Override
     public void eliminar(Long id) {
-        candidatoRepositorio.eliminar(id);
+        jpaRepositorio.deleteById(id);
     }
     @Override
     public List<Candidato> findByEstado(String estado){
-        return candidatoRepositorio.findByEstado(estado);
+        return jpaRepositorio.findByEstado(estado);
     }
-}
+}*/

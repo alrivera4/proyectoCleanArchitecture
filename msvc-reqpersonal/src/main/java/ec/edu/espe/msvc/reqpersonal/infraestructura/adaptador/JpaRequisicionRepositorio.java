@@ -1,4 +1,4 @@
-package ec.edu.espe.msvc.reqpersonal.infraestructura.adaptador;
+/*package ec.edu.espe.msvc.reqpersonal.infraestructura.adaptador;
 
 import ec.edu.espe.msvc.reqpersonal.dominio.entidades.Requisicion;
 import ec.edu.espe.msvc.reqpersonal.dominio.repositorio.RequisicionRepositorio;
@@ -10,9 +10,9 @@ import java.util.Optional;
 @Repository
 public class JpaRequisicionRepositorio implements RequisicionRepositorio {
 
-    private final JpaRequisicionRepositorioSpring jpaRepositorio;
+    private final RequisicionRepositorio jpaRepositorio;
 
-    public JpaRequisicionRepositorio(JpaRequisicionRepositorioSpring jpaRepositorio) {
+    public JpaRequisicionRepositorio(RequisicionRepositorio jpaRepositorio) {
         this.jpaRepositorio = jpaRepositorio;
     }
 
@@ -45,4 +45,4 @@ public class JpaRequisicionRepositorio implements RequisicionRepositorio {
     
     
     
-}
+}*/

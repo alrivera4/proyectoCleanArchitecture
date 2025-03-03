@@ -29,11 +29,11 @@ public class RequisicionServicio {
     }
 
     public List<Requisicion> listarRequisiciones() {
-        return repositorio.listarTodas();
+        return repositorio.findAll();
     }
 
     public Optional<Requisicion> obtenerRequisicionPorId(Long id) {
-        return repositorio.buscarPorId(id);
+        return repositorio.findById(id);
     }
 
     public void eliminarRequisicion(Long id) {
@@ -41,10 +41,10 @@ public class RequisicionServicio {
     }
 
     public Requisicion actualizarEstadoRequisicion(Long id, String nuevoEstado) {
-        return repositorio.buscarPorId(id)
+        return repositorio.findById(id)
                 .map(requisicion -> {
                     requisicion.setEstado(nuevoEstado);
-                    return repositorio.guardar(requisicion);
+                    return repositorio.save(requisicion);
                 })
                 .orElseThrow(() -> new RuntimeException("Requisición no encontrada con ID: " + id));
     }

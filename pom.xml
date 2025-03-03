@@ -14,9 +14,9 @@
     <packaging>pom</packaging>
     
     <modules>
-        <module>msvc-libros</module>
-        <module>msvc-usuarios</module>
-        <module>PetNet</module>
+        <module>msvc-reqpersonal</module>
+        <module>msvc-vacantes</module>
+        <module>msvc-gescandidatos</module>
     </modules>
     
     <properties>

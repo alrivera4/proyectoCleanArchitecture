@@ -24,6 +24,6 @@ public class CrearRequisicionUseCase {
                 .fechaSolicitud(LocalDate.now())
                 .build();
 
-        return repositorio.guardar(requisicion);
+        return repositorio.save(requisicion);
     }
 }

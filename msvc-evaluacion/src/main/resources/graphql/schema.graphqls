@@ -1,0 +1,33 @@
+# schema.graphqls
+
+# Definición del tipo Candidato
+type Candidato {
+  idCandidato: ID!
+  nombre: String!
+  apellido: String!
+  correo: String!
+  telefono: String!
+  estado: String!
+}
+
+# Definición del tipo Prueba
+type Prueba {
+  idPrueba: ID!
+  nombre: String!
+  descripcion: String!
+  tipo: String!    # psicotécnica o técnica
+  activa: Boolean!
+  candidato: Candidato  # Relación con Candidato
+}
+
+# Consultas para obtener pruebas
+type Query {
+  obtenerPruebasActivas: [Prueba]!
+  obtenerPruebasPorTipo(tipo: String!): [Prueba]!
+  obtenerPruebasPorCandidato(candidatoId: ID!): [Prueba]!
+}
+
+# Mutación para coordinar una nueva prueba
+type Mutation {
+  coordinarPrueba(nombre: String!, descripcion: String!, tipo: String!, candidatoId: ID!): Prueba!
+}
