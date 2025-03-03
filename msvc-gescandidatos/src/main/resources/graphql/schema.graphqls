@@ -1,0 +1,14 @@
+type Candidato {
+    id_candidato: ID!
+    nombre: String!
+    apellido: String!
+    correo: String!
+    telefono: String!
+    estado: String!
+    id_vacante: ID!
+}
+
+type Query {
+    listarCandidatos: [Candidato]
+    buscarCandidato(id: ID!): Candidato
+}

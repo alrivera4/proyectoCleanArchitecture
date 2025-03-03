@@ -1,19 +1,16 @@
-package ec.edu.espe.msvc.reqpersonal.dominio.entidades;
+package ec.edu.espe.msvc.gescandidatos.dominio.entidades;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 
-import java.time.LocalDate;
-
-
 @Entity
-@Table(name = "requisicion")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
-
 public class Requisicion {
     
     @Id
@@ -22,6 +19,10 @@ public class Requisicion {
     private String cargo;
     private String descripcion;
     private String categoriaSalarial;
-    private String estado; // "PENDIENTE", "APROBADA", "RECHAZADA"
-    private LocalDate fechaSolicitud;
+    private String estado;
 }
+
+
+
+
+
