@@ -1,0 +1,36 @@
+type Seleccion {
+    idSeleccion: ID
+    candidato: Candidato
+    vacante: Vacante
+    resultadoEvaluacion: String
+    recomendaciones: String
+}
+
+type Candidato {
+    idCandidato: ID
+    nombre: String
+    apellido: String
+    correo: String
+}
+
+type Vacante {
+    idVacante: ID
+    titulo: String
+    descripcion: String
+}
+
+type Query {
+    obtenerSeleccionPorId(id: ID!): Seleccion
+    obtenerTodasLasSelecciones: [Seleccion]
+}
+
+type Mutation {
+    guardarSeleccion(
+        idCandidato: ID!
+        idVacante: ID!
+        resultadoEvaluacion: String!
+        recomendaciones: String!
+    ): Seleccion
+
+    eliminarSeleccion(id: ID!): Boolean
+}

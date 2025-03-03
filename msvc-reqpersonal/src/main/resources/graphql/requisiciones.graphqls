@@ -1,16 +1,18 @@
 type Requisicion {
-    id: ID!
+    idRequisicion: ID!
     cargo: String!
     descripcion: String!
     categoriaSalarial: String!
     estado: String!
+    fechaSolicitud: String!
 }
 
 type Query {
     listarRequisiciones: [Requisicion]
+    listarRequisicionesAprobadas: [Requisicion]
 }
 
 type Mutation {
     crearRequisicion(cargo: String!, descripcion: String!, categoriaSalarial: String!): Requisicion
-    eliminarRequisicion(id: ID!): String
+    eliminarRequisicion(idRequisicion: ID!): String
 }

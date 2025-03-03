@@ -4,27 +4,24 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "selecciones")
+@Table(name = "candidato")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Seleccion {
+public class Candidato {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idSeleccion;
+    private Long idCandidato;
 
-    @ManyToOne
-    @JoinColumn(name = "id_candidato", nullable = false)
-    private Candidato candidato;
+    private String nombre;
+    private String apellido;
+    private String correo;
+    private String telefono;
+    private String estado;
 
     @ManyToOne
     @JoinColumn(name = "id_vacante", nullable = false)
     private Vacante vacante;
-
-    
-    private String resultadoEvaluacion;  // Ejemplo: "Aprobado", "Rechazado"
-    private String recomendaciones;
 }
-

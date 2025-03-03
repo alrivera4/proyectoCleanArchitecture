@@ -33,8 +33,8 @@ public class RequisicionController {
     }
 
     @MutationMapping
-    public String eliminarRequisicion(@Argument Long id) {
-        servicio.eliminarRequisicion(id);
+    public String eliminarRequisicion(@Argument("idRequisicion") Long idRequisicion) {
+        servicio.eliminarRequisicion(idRequisicion);
         return "Requisición eliminada con éxito.";
     }
 
