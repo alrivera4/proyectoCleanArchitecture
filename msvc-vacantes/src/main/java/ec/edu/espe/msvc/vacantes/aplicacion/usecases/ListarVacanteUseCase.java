@@ -1,4 +1,4 @@
-package ec.edu.espe.msvc.vacantes.aplicacion.usecase;
+package ec.edu.espe.msvc.vacantes.aplicacion.usecases;
 
 import ec.edu.espe.msvc.vacantes.dominio.entidades.Vacante;
 import ec.edu.espe.msvc.vacantes.dominio.repositorio.VacanteRepositorio;

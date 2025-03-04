@@ -1,7 +1,7 @@
 package ec.edu.espe.msvc.vacantes.aplicacion.servicio;
 
-import ec.edu.espe.msvc.vacantes.aplicacion.usecase.CrearVacanteUseCase;
-import ec.edu.espe.msvc.vacantes.aplicacion.usecase.ListarVacanteUseCase;
+import ec.edu.espe.msvc.vacantes.aplicacion.usecases.CrearVacanteUseCase;
+import ec.edu.espe.msvc.vacantes.aplicacion.usecases.ListarVacanteUseCase;
 import ec.edu.espe.msvc.vacantes.dominio.entidades.Requisicion;
 import ec.edu.espe.msvc.vacantes.dominio.entidades.Vacante;
 import ec.edu.espe.msvc.vacantes.dominio.repositorio.RequisicionRepositorio;
