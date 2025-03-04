@@ -1,22 +1,40 @@
 type Seleccion {
-    idSeleccion: ID
-    candidato: Candidato
-    vacante: Vacante
-    resultadoEvaluacion: String
-    recomendaciones: String
+    idSeleccion: ID!
+    candidato: Candidato!
+    vacante: Vacante!
+    resultadoEvaluacion: String!
+    recomendaciones: String!
+    
 }
 
 type Candidato {
-    idCandidato: ID
-    nombre: String
-    apellido: String
-    correo: String
+    idCandidato: ID!
+    nombre: String!
+    apellido: String!
+    correo: String!
+    telefono: String!
+    estado: String!
+    vacante: Vacante!
 }
 
 type Vacante {
-    idVacante: ID
-    titulo: String
-    descripcion: String
+    idVacante: ID!
+    cargo: String!
+    descripcion: String!
+    categoriaSalarial: String!
+    estado: String!
+    fechaPublicacion: String!
+    cantidadMaximaPostulaciones: Int!
+    requisicion: Requisicion!  # Relación con `msvc-reqpersonal`
+}
+
+type Requisicion {
+    idRequisicion: ID!
+    cargo: String!
+    descripcion: String!
+    categoriaSalarial: String!
+    estado: String!
+    fechaSolicitud: String!
 }
 
 type Query {

@@ -1,14 +1,35 @@
 type Candidato {
-    id_candidato: ID!
+    idCandidato: ID!
     nombre: String!
     apellido: String!
     correo: String!
     telefono: String!
     estado: String!
-    id_vacante: ID!
+    vacante: Vacante!
 }
+
+type Vacante {
+    idVacante: ID!
+    cargo: String!
+    descripcion: String!
+    categoriaSalarial: String!
+    estado: String!
+    fechaPublicacion: String!
+    requisicion: Requisicion!  # Relación con `msvc-reqpersonal`
+
+}
+
+type Requisicion {
+    idRequisicion: ID!
+    cargo: String!
+    descripcion: String!
+    categoriaSalarial: String!
+    estado: String!
+    fechaSolicitud: String!
+}
+
 
 type Query {
     listarCandidatos: [Candidato]
-    buscarCandidato(id: ID!): Candidato
+    buscarCandidato(idCandidato: ID!): Candidato
 }

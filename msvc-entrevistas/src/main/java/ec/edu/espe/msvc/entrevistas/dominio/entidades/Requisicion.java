@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.time.LocalDate;
 import lombok.*;
 
 @Entity
@@ -20,6 +21,7 @@ public class Requisicion {
     private String descripcion;
     private String categoriaSalarial;
     private String estado;
+    private LocalDate fechaSolicitud;
 }
 
 

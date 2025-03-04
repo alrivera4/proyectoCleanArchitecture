@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface CandidatoRepositorio extends JpaRepository<Candidato, Long> {
     // Buscar todos los candidatos con un estado específico
     List<Candidato> findByEstado(String estado);
+    int countByVacanteIdVacante(Long idVacante);
 }

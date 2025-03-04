@@ -1,27 +1,30 @@
 type Vacante {
-    id: ID!
+    idVacante: ID!
     cargo: String!
     descripcion: String!
     categoriaSalarial: String!
     estado: String!
     fechaPublicacion: String!
+    cantidadMaximaPostulaciones: Int!
     requisicion: Requisicion!  # Relación con `msvc-reqpersonal`
 }
 
 type Requisicion {
-    id: ID!
+    idRequisicion: ID!
     cargo: String!
     descripcion: String!
     categoriaSalarial: String!
     estado: String!
+    fechaSolicitud: String!
 }
 
 type Query {
     listarVacantes: [Vacante]
-    buscarVacantePorId(id: ID!): Vacante
+    buscarVacantePorId(idVacante: ID!): Vacante
+    obtenerVacantesPorRequisicion(idRequisicion: ID!): [Vacante]
 }
 
 type Mutation {
     crearVacante(cargo: String!, descripcion: String!, categoriaSalarial: String!, idRequisicion: ID!): Vacante
-    cerrarVacante(id: ID!): String
+    cerrarVacante(idVacante: ID!): String
 }

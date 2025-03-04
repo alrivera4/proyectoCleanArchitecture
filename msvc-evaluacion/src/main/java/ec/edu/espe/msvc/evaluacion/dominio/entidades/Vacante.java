@@ -22,6 +22,7 @@ public class Vacante {
     private String categoriaSalarial;
     private String estado; // "ABIERTA", "CERRADA"
     private LocalDate fechaPublicacion;
+    private int cantidadMaximaPostulaciones;
 
     @ManyToOne
     @JoinColumn(name = "id_requisicion", nullable = false)

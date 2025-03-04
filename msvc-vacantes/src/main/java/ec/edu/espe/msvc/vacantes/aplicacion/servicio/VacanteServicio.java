@@ -6,9 +6,11 @@ import ec.edu.espe.msvc.vacantes.dominio.entidades.Requisicion;
 import ec.edu.espe.msvc.vacantes.dominio.entidades.Vacante;
 import ec.edu.espe.msvc.vacantes.dominio.repositorio.RequisicionRepositorio;
 import ec.edu.espe.msvc.vacantes.dominio.repositorio.VacanteRepositorio;
+import java.time.LocalDate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VacanteServicio {
@@ -28,17 +30,20 @@ public class VacanteServicio {
         this.requisicionRepositorio = requisicionRepositorio;  // Inicialización del repositorio de Requisicion
     }
 
-    public Vacante crearVacante(String cargo, String descripcion, String categoriaSalarial, Long idRequisicion) {
-        // Obtenemos el objeto Requisicion a partir del idRequisicion
+    public Vacante crearVacante(String cargo, String descripcion, String categoriaSalarial, Long idRequisicion, int cantidadMaximaPostulaciones) {
         Requisicion requisicion = requisicionRepositorio.findById(idRequisicion)
                 .orElseThrow(() -> new RuntimeException("Requisición no encontrada con ID: " + idRequisicion));
 
-        // Creamos la Vacante, asignando el objeto Requisicion
-        Vacante vacante = new Vacante(null, cargo, descripcion, categoriaSalarial, "ABIERTA", null, requisicion);
-        
-        // Guardamos la vacante
-        return vacanteRepositorio.save(vacante);
+        Vacante vacante = new Vacante(null, cargo, descripcion, categoriaSalarial, "ABIERTA", LocalDate.now(), cantidadMaximaPostulaciones, requisicion);
+
+
+        Vacante nuevaVacante = vacanteRepositorio.save(vacante);
+
+        // 🔹 Aseguramos que se retorne la vacante con el ID generado por la base de datos
+        return vacanteRepositorio.findById(nuevaVacante.getIdVacante()).orElseThrow(() -> 
+            new RuntimeException("Error al recuperar la vacante creada"));
     }
+
 
     public List<Vacante> listarVacantes() {
         return vacanteRepositorio.findAll();
@@ -47,4 +52,8 @@ public class VacanteServicio {
     public List<Vacante> obtenerVacantesPorRequisicion(Long idRequisicion) {
         return vacanteRepositorio.findByRequisicion_IdRequisicion(idRequisicion);
     }
+    public Optional<Vacante> buscarPorId(Long idVacante) {
+        return vacanteRepositorio.findById(idVacante);
+    }
+
 }

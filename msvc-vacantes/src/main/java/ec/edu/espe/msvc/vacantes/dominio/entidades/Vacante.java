@@ -7,8 +7,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "vacantes")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -23,7 +22,9 @@ public class Vacante {
     private String categoriaSalarial;
     private String estado; // "ABIERTA", "CERRADA"
     private LocalDate fechaPublicacion;
-
+    private int cantidadMaximaPostulaciones; // Nueva propiedad
+    
+    
     @ManyToOne
     @JoinColumn(name = "id_requisicion", nullable = false)
     private Requisicion requisicion;

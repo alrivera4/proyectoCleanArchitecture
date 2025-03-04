@@ -1,12 +1,3 @@
-type Requisicion {
-    idRequisicion: ID!
-    cargo: String
-    descripcion: String
-    categoriaSalarial: String
-    estado: String
-}
-
-
 type Entrevista {
     idEntrevista: ID!
     candidato: Candidato!
@@ -18,23 +9,34 @@ type Entrevista {
 
 type Candidato {
     idCandidato: ID!
-    nombre: String
-    apellido: String
-    correo: String
-    telefono: String
-    estado: String
-    vacante: Vacante!  # Relación con Vacante
+    nombre: String!
+    apellido: String!
+    correo: String!
+    telefono: String!
+    estado: String!
+    vacante: Vacante!
 }
 
 type Vacante {
     idVacante: ID!
-    cargo: String
-    descripcion: String
-    categoriaSalarial: String
-    estado: String
-    fechaPublicacion: String
-    requisicion: Requisicion!  # Relación con Requisición
+    cargo: String!
+    descripcion: String!
+    categoriaSalarial: String!
+    estado: String!
+    fechaPublicacion: String!
+    requisicion: Requisicion!  # Relación con `msvc-reqpersonal`
+
 }
+
+type Requisicion {
+    idRequisicion: ID!
+    cargo: String!
+    descripcion: String!
+    categoriaSalarial: String!
+    estado: String!
+    fechaSolicitud: String!
+}
+
 
 type Query {
     obtenerEntrevistasPorCandidato(idCandidato: ID!): [Entrevista]
