@@ -19,7 +19,7 @@ public class CandidatoController {
         this.candidatoServicio = candidatoServicio;
     }
 
-    @MutationMapping
+   /* @MutationMapping
     public Candidato crearCandidato(
             @Argument String nombre,
             @Argument String apellido,
@@ -37,7 +37,27 @@ public class CandidatoController {
                 .build();
 
         return candidatoServicio.guardarCandidato(candidato, idVacante);
-    }
+    */
+    @MutationMapping
+public String crearCandidato(
+        @Argument String nombre,
+        @Argument String apellido,
+        @Argument String correo,
+        @Argument String telefono,
+        @Argument String estado,
+        @Argument Long idVacante) {
+
+    Candidato candidato = Candidato.builder()
+            .nombre(nombre)
+            .apellido(apellido)
+            .correo(correo)
+            .telefono(telefono)
+            .estado(estado)
+            .build();
+
+    return candidatoServicio.guardarCandidato(candidato, idVacante);  // ✅ Ahora devuelve un mensaje manejado
+}
+
 
     @QueryMapping
     public List<Candidato> listarCandidatos() {

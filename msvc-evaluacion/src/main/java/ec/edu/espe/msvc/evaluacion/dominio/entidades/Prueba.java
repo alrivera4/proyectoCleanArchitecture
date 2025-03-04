@@ -17,7 +17,7 @@ public class Prueba {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPrueba;
-
+    private int calificacion;
     private String nombre;
     private String descripcion;
     private String tipo; // psicotécnica o técnica

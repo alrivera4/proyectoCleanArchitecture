@@ -18,6 +18,10 @@ public class VacanteController {
         this.vacanteServicio = vacanteServicio;
     }
     
+    @QueryMapping
+    public List<Vacante> listarVacantes() {
+        return vacanteServicio.listarVacantes();
+    }
 
     @QueryMapping
     public List<Vacante> obtenerVacantesPorRequisicion(@Argument Long idRequisicion) {
@@ -39,4 +43,10 @@ public class VacanteController {
             @Argument int cantidadMaximaPostulaciones ) {
         return vacanteServicio.crearVacante(cargo, descripcion, categoriaSalarial, idRequisicion, cantidadMaximaPostulaciones);
     }
+    
+    @MutationMapping
+    public String eliminarVacante(@Argument Long idVacante) {
+        return vacanteServicio.eliminarVacante(idVacante);
+    }
+
 }

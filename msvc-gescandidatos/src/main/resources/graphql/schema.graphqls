@@ -33,3 +33,17 @@ type Query {
     listarCandidatos: [Candidato]
     buscarCandidato(idCandidato: ID!): Candidato
 }
+
+type Mutation {
+    crearCandidato(
+        nombre: String!
+        apellido: String!
+        correo: String!
+        telefono: String!
+        estado: String!
+        idVacante: ID!
+    ): String
+
+    eliminarCandidato(idCandidato: ID!): String
+}
+

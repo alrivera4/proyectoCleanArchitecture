@@ -46,7 +46,7 @@ public class CandidatoServicio {
         return buscarCandidatoUseCase.ejecutar(id);
     }
 
-    public Candidato guardarCandidato(Candidato candidato, Long idVacante) {
+  /*  public Candidato guardarCandidato(Candidato candidato, Long idVacante) {
         // Lógica para verificar si la vacante tiene espacio para más postulaciones
         Vacante vacante = vacanteRepositorio.findById(idVacante)
                 .orElseThrow(() -> new IllegalArgumentException("Vacante no encontrada"));
@@ -62,6 +62,64 @@ public class CandidatoServicio {
         candidato.setVacante(vacante);
         return crearCandidatoUseCase.ejecutar(candidato);
     }
+*/
+  /*  public Candidato guardarCandidato(Candidato candidato, Long idVacante) {
+        // Obtener la vacante por ID
+        Vacante vacante = vacanteRepositorio.findById(idVacante)
+                .orElseThrow(() -> new IllegalArgumentException("Vacante no encontrada"));
+
+        int cantidadPostulaciones = contarPostulaciones(idVacante);
+        int cantidadMaximaPostulaciones = vacante.getCantidadMaximaPostulaciones();
+
+        if (cantidadPostulaciones >= cantidadMaximaPostulaciones) {
+            // 🔹 Cambiar estado de la vacante a "CERRADA" si alcanza el límite de postulaciones
+            vacante.setEstado("CERRADA");
+            vacanteRepositorio.save(vacante);  // 🔹 Guardamos el nuevo estado en la BD
+            //throw new IllegalStateException("Esta vacante ha alcanzado el límite y ha sido cerrada.");
+        }
+
+        // Guardar el candidato si aún hay espacio
+        candidato.setVacante(vacante);
+        Candidato nuevoCandidato = crearCandidatoUseCase.ejecutar(candidato);
+
+        // 🔹 Verificar si se alcanzó el límite después de guardar el candidato
+        if (contarPostulaciones(idVacante) >= cantidadMaximaPostulaciones) {
+            vacante.setEstado("CERRADA");
+            vacanteRepositorio.save(vacante);  // 🔹 Guardamos el nuevo estado en la BD
+        }
+
+        return nuevoCandidato;
+    }*/
+    public String guardarCandidato(Candidato candidato, Long idVacante) {
+        // Obtener la vacante por ID
+        Vacante vacante = vacanteRepositorio.findById(idVacante)
+                .orElseThrow(() -> new IllegalArgumentException("Vacante no encontrada"));
+
+        int cantidadPostulaciones = contarPostulaciones(idVacante);
+        int cantidadMaximaPostulaciones = vacante.getCantidadMaximaPostulaciones();
+
+        if (cantidadPostulaciones >= cantidadMaximaPostulaciones) {
+            // 🔹 Cambiar estado de la vacante a "CERRADA" si alcanza el límite de postulaciones
+            vacante.setEstado("CERRADA");
+            vacanteRepositorio.save(vacante);  // 🔹 Guardamos el nuevo estado en la BD
+
+            return "Esta vacante ha alcanzado el límite y ha sido cerrada.";  // ✅ En lugar de lanzar una excepción, retornamos un mensaje manejado.
+        }
+
+        // Guardar el candidato si aún hay espacio
+        candidato.setVacante(vacante);
+        Candidato nuevoCandidato = crearCandidatoUseCase.ejecutar(candidato);
+
+        // 🔹 Verificar si se alcanzó el límite después de guardar el candidato
+        cantidadPostulaciones = contarPostulaciones(idVacante);
+        if (cantidadPostulaciones >= cantidadMaximaPostulaciones) {
+            vacante.setEstado("CERRADA");
+            vacanteRepositorio.save(vacante);
+        }
+
+        return "Candidato registrado exitosamente.";  // ✅ Mensaje cuando el candidato se guarda correctamente
+    }
+
 
     public void eliminarCandidato(Long id) {
         eliminarCandidatoUseCase.ejecutar(id);

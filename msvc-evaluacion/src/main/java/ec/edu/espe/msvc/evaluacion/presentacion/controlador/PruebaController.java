@@ -39,12 +39,13 @@ public class PruebaController {
 
     @MutationMapping
     public Prueba coordinarPrueba(@Argument String nombre, @Argument String descripcion, 
-                                  @Argument String tipo, @Argument Long candidatoId) {
+                                  @Argument String tipo, @Argument int calificacion, @Argument Long candidatoId) {
         // Crear la prueba con los datos recibidos
         Prueba prueba = new Prueba();
         prueba.setNombre(nombre);
         prueba.setDescripcion(descripcion);
         prueba.setTipo(tipo);
+        prueba.setCalificacion(calificacion);
         prueba.setActiva(true);  // Por defecto la prueba está activa
 
         // Aquí se obtiene el Candidato por su ID, y se asigna a la prueba
@@ -61,13 +62,14 @@ public class PruebaController {
 
     @MutationMapping
     public Prueba actualizarPrueba(@Argument Long id, @Argument String nombre, @Argument String descripcion,
-                                   @Argument String tipo, @Argument Boolean activa) {
+                                   @Argument String tipo,@Argument int calificacion, @Argument Boolean activa) {
         Optional<Prueba> pruebaExistente = coordinarPruebaUseCase.obtenerPruebaPorId(id);
         if (pruebaExistente.isPresent()) {
             Prueba prueba = pruebaExistente.get();
             prueba.setNombre(nombre);
             prueba.setDescripcion(descripcion);
             prueba.setTipo(tipo);
+            prueba.setCalificacion(calificacion);
             prueba.setActiva(activa);
             return coordinarPruebaUseCase.coordinarPrueba(prueba);
         } else {

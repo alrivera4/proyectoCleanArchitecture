@@ -25,6 +25,7 @@ type Query {
 }
 
 type Mutation {
-    crearVacante(cargo: String!, descripcion: String!, categoriaSalarial: String!, idRequisicion: ID!): Vacante
+    crearVacante(cargo: String!, descripcion: String!, categoriaSalarial: String!, idRequisicion: ID!, cantidadMaximaPostulaciones: Int!): Vacante
     cerrarVacante(idVacante: ID!): String
+    eliminarVacante(idVacante: ID!): String
 }

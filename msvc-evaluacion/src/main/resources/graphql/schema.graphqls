@@ -39,6 +39,7 @@ type Prueba {
   descripcion: String!
   tipo: String!    # psicotécnica o técnica
   activa: Boolean!
+  calificacion: Int!
   candidato: Candidato  # Relación con Candidato
 }
 
@@ -51,5 +52,6 @@ type Query {
 
 # Mutación para coordinar una nueva prueba
 type Mutation {
-  coordinarPrueba(nombre: String!, descripcion: String!, tipo: String!, candidatoId: ID!): Prueba!
+  coordinarPrueba(nombre: String!, descripcion: String!, tipo: String!,calificacion: Int!, candidatoId: ID!): Prueba!
+  eliminarPrueba(id: ID!): Boolean!
 }

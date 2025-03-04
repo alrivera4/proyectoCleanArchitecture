@@ -55,5 +55,16 @@ public class VacanteServicio {
     public Optional<Vacante> buscarPorId(Long idVacante) {
         return vacanteRepositorio.findById(idVacante);
     }
+    public String eliminarVacante(Long idVacante) {
+        Vacante vacante = vacanteRepositorio.findById(idVacante)
+                .orElseThrow(() -> new RuntimeException("Vacante no encontrada con ID: " + idVacante));
+
+        vacante.setEstado("CANCELADA"); // 🔹 Cambio de estado en lugar de eliminar
+        vacanteRepositorio.save(vacante); // 🔹 Guardamos la actualización
+
+        return "Vacante marcada como CANCELADA.";
+    }
+
+
 
 }
