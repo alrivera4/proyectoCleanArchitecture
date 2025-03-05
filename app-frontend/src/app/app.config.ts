@@ -26,7 +26,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     // Proveedor para cada microservicio
-    { provide: APOLLO_OPTIONS, useFactory: () => createApollo('vacantes') },  // Microservicio 1
+    { provide: APOLLO_OPTIONS, useFactory: () => createApollo('reqPersonal') },  // Microservicio 1
     /*{ provide: APOLLO_OPTIONS, useFactory: () => createApollo('vacantes') },     // Microservicio 2
     { provide: APOLLO_OPTIONS, useFactory: () => createApollo('gesCandidatos') }, // Microservicio 3
     { provide: APOLLO_OPTIONS, useFactory: () => createApollo('evaluacion') },    // Microservicio 4

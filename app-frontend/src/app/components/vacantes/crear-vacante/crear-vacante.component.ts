@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./crear-vacante.component.css'],
 })
 export class CrearVacanteComponent implements OnInit {
-  requisiciones$!: Observable<any>;
+  requisiciones: any[] = []; // Ahora es un array, ya que Apollo devuelve un Observable con un objeto interno
   cargoVacante: string = '';
   descripcion: string = '';
   categoriaSalarial: string = '';
@@ -21,11 +21,12 @@ export class CrearVacanteComponent implements OnInit {
   idRequisicionSeleccionada: number | null = null;
   notification: { message: string; type: string } | null = null;
 
-
   constructor(private vacanteService: VacanteService, private router: Router) {}
 
   ngOnInit(): void {
-    this.requisiciones$ = this.vacanteService.obtenerRequisiciones();
+    this.vacanteService.obtenerRequisiciones().subscribe((result: any) => {
+      this.requisiciones = result.data.listarRequisiciones;
+    });
   }
 
   crearVacante() {
@@ -58,6 +59,7 @@ export class CrearVacanteComponent implements OnInit {
       );
     }
   }
+
   // Método para mostrar notificación
   showNotification(message: string, type: string): void {
     this.notification = { message, type };

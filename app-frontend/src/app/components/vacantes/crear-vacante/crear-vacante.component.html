@@ -4,9 +4,9 @@
 
     <form #formulario="ngForm" (ngSubmit)="crearVacante()">
       <!-- Selección de Requisición -->
-      <div class="mb-3">
-        <label for="requisicion" class="form-label">Seleccione Requisición</label>
-        <select
+        <div class="mb-3">
+          <label for="requisicion" class="form-label">Seleccione Requisición</label>
+          <select
           id="requisicion"
           class="form-select"
           [(ngModel)]="idRequisicionSeleccionada"
@@ -15,14 +15,12 @@
           #requisicionInput="ngModel"
         >
           <option value="" disabled selected>Seleccione una requisición</option>
-          <option *ngFor="let requisicion of requisiciones$ | async" [value]="requisicion.idRequisicion">
+          <option *ngFor="let requisicion of requisiciones" [value]="requisicion.idRequisicion">
             {{ requisicion.cargo }}
           </option>
         </select>
-        <div *ngIf="requisicionInput.invalid && requisicionInput.touched" class="text-danger small">
-          Seleccionar una requisición es obligatorio.
         </div>
-      </div>
+      
 
       <!-- Cargo de la Vacante -->
       <div class="mb-3">
