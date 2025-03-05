@@ -1,0 +1,43 @@
+<!-- Botón para redirigir a la página de Crear Requisición -->
+<div class="d-grid gap-2 d-md-block">
+  <button
+    type="button"
+    class="btn btn-primary mt-3 mb-3 ms-3 me-3"
+    [routerLink]="['/vacantes/registro']"
+  >
+    Crear Vacante
+  </button>
+</div>
+
+
+<!-- Tabla de Vacantes -->
+<div class="container mt-4">
+<h3>Lista de Vacantes</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Cargo</th>
+      <th>Descripción</th>
+      <th>Estado</th>
+      <th>Fecha de Publicación</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="vacantes.length === 0">
+      <td colspan="5" class="text-center">No hay vacantes disponibles</td>
+    </tr>
+    <tr *ngFor="let vacante of vacantes">
+      <td>{{ vacante.cargo }}</td>
+      <td>{{ vacante.descripcion }}</td>
+      <td>{{ vacante.estado }}</td>
+      <td>{{ vacante.fechaPublicacion }}</td>
+      <td>
+        <button (click)="eliminarVacante(vacante.idVacante)" class="btn btn-danger">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,51 @@
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card p-4 shadow" style="max-width: 400px; width: 100%;">
+    <h2 class="text-center mb-4">Crear Nueva Requisición</h2>
+    
+    <form #formulario="ngForm" (ngSubmit)="crearRequisicion()">
+      <div class="mb-4">
+        <label for="cargo" class="form-label">Cargo</label>
+        <input type="text" class="form-control" id="cargo" [(ngModel)]="cargo" name="cargo" required
+          pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
+          #cargoInput="ngModel">
+        <div *ngIf="cargoInput.invalid && cargoInput.touched" class="text-danger small">
+          Solo se permiten letras y tildes.
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <textarea class="form-control" id="descripcion" [(ngModel)]="descripcion" name="descripcion" required
+          pattern="^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s]+$"
+          style="min-height: 100px;" #descripcionInput="ngModel"></textarea>
+        <div *ngIf="descripcionInput.invalid && descripcionInput.touched" class="text-danger small">
+          Solo se permiten letras, números y tildes. No se permiten caracteres especiales.
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="categoria" class="form-label">Categoría Salarial</label>
+        <input type="text" class="form-control" id="categoria" [(ngModel)]="categoriaSalarial" name="categoriaSalarial" required
+          pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
+          #categoriaInput="ngModel">
+        <div *ngIf="categoriaInput.invalid && categoriaInput.touched" class="text-danger small">
+          Solo se permiten letras y tildes.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100" [disabled]="formulario.invalid">Crear</button>
+    </form>
+  </div>
+</div>
+
+<!-- Notificación dinámica -->
+<div 
+  *ngIf="notification" 
+  [ngClass]="{
+    'alert': true,
+    'alert-success': notification.type === 'success',
+    'alert-danger': notification.type === 'error'
+  }" 
+  class="notification mt-3 text-center">
+  {{ notification.message }}
+</div>

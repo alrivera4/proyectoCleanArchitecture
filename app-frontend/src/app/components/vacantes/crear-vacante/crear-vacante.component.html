@@ -1,0 +1,116 @@
+<div class="container d-flex justify-content-center mt-5">
+  <div class="card p-4 shadow" style="max-width: 500px; width: 100%;">
+    <h2 class="text-center mb-4">Crear Vacante</h2>
+
+    <form #formulario="ngForm" (ngSubmit)="crearVacante()">
+      <!-- Selección de Requisición -->
+      <div class="mb-3">
+        <label for="requisicion" class="form-label">Seleccione Requisición</label>
+        <select
+          id="requisicion"
+          class="form-select"
+          [(ngModel)]="idRequisicionSeleccionada"
+          name="requisicion"
+          required
+          #requisicionInput="ngModel"
+        >
+          <option value="" disabled selected>Seleccione una requisición</option>
+          <option *ngFor="let requisicion of requisiciones$ | async" [value]="requisicion.idRequisicion">
+            {{ requisicion.cargo }}
+          </option>
+        </select>
+        <div *ngIf="requisicionInput.invalid && requisicionInput.touched" class="text-danger small">
+          Seleccionar una requisición es obligatorio.
+        </div>
+      </div>
+
+      <!-- Cargo de la Vacante -->
+      <div class="mb-3">
+        <label for="cargoVacante" class="form-label">Cargo de la Vacante</label>
+        <input
+          id="cargoVacante"
+          type="text"
+          class="form-control"
+          [(ngModel)]="cargoVacante"
+          name="cargoVacante"
+          required
+          pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
+          #cargoInput="ngModel"
+        />
+        <div *ngIf="cargoInput.invalid && cargoInput.touched" class="text-danger small">
+          Solo se permiten letras y tildes.
+        </div>
+      </div>
+
+      <!-- Descripción -->
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <textarea
+          id="descripcion"
+          class="form-control"
+          [(ngModel)]="descripcion"
+          name="descripcion"
+          rows="4"
+          required
+          pattern="^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s]+$"
+          #descripcionInput="ngModel"
+        ></textarea>
+        <div *ngIf="descripcionInput.invalid && descripcionInput.touched" class="text-danger small">
+          Solo se permiten letras, números y tildes.
+        </div>
+      </div>
+
+      <!-- Categoría Salarial -->
+      <div class="mb-3">
+        <label for="categoriaSalarial" class="form-label">Categoría Salarial</label>
+        <input
+          id="categoriaSalarial"
+          type="text"
+          class="form-control"
+          [(ngModel)]="categoriaSalarial"
+          name="categoriaSalarial"
+          required
+          pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
+          #categoriaInput="ngModel"
+        />
+        <div *ngIf="categoriaInput.invalid && categoriaInput.touched" class="text-danger small">
+          Solo se permiten letras y tildes.
+        </div>
+      </div>
+
+      <!-- Cantidad Máxima de Postulaciones -->
+      <div class="mb-3">
+        <label for="cantidadMaximaPostulaciones" class="form-label">Cantidad Máxima de Postulaciones</label>
+        <input
+          id="cantidadMaximaPostulaciones"
+          type="text"
+          class="form-control"
+          [(ngModel)]="cantidadMaximaPostulaciones"
+          name="cantidadMaximaPostulaciones"
+          required
+          pattern="^[1-9]\d*$"
+          #cantidadInput="ngModel"
+        />
+        <div *ngIf="cantidadInput.invalid && cantidadInput.touched" class="text-danger small">
+          Ingrese un número mayor a 0.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100" [disabled]="formulario.invalid">
+        Crear Vacante
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Notificación dinámica -->
+<div 
+  *ngIf="notification" 
+  [ngClass]="{
+    'alert': true,
+    'alert-success': notification.type === 'success',
+    'alert-danger': notification.type === 'error'
+  }" 
+  class="notification mt-3 text-center">
+  {{ notification.message }}
+</div>

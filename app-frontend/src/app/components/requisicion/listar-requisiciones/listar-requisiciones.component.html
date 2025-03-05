@@ -1,0 +1,41 @@
+<!-- Botón para redirigir a la página de Crear Requisición -->
+    <div class="d-grid gap-2 d-md-block">
+      <button
+        type="button"
+        class="btn btn-primary mt-3 mb-3 ms-3 me-3"
+        [routerLink]="['/req-personal/registro']"
+      >
+        Crear Requisición
+      </button>
+    </div>
+    
+<div class="container mt-4">
+    <h2>Lista de Requisiciones</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cargo</th>
+          <th>Descripción</th>
+          <th>Categoria Salarial</th>
+          <th>Estado</th>
+          <th>Fecha de Solicitud</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let req of requisiciones">
+          <td>{{ req.idRequisicion }}</td>
+          <td>{{ req.cargo }}</td>
+          <td>{{ req.descripcion }}</td>
+          <td>{{ req.categoriaSalarial }}</td>
+          <td>{{ req.estado }}</td>
+          <td>{{ req.fechaSolicitud }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="eliminarRequisicion(req.idRequisicion)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

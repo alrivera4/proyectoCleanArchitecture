@@ -18,7 +18,7 @@ public class RequisicionController {
         this.servicio = servicio;
     }
 
-    @QueryMapping
+    @QueryMapping(name = "listarRequisiciones")
     public List<Requisicion> listarRequisiciones() {
         return servicio.listarRequisiciones();
     }

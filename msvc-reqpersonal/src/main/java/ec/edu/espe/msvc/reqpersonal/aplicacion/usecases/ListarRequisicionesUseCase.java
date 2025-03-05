@@ -1,5 +1,6 @@
 package ec.edu.espe.msvc.reqpersonal.aplicacion.usecases;
 
+
 import ec.edu.espe.msvc.reqpersonal.dominio.entidades.Requisicion;
 import ec.edu.espe.msvc.reqpersonal.dominio.repositorio.RequisicionRepositorio;
 import org.springframework.stereotype.Service;
